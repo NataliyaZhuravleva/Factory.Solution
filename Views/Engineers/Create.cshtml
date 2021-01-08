@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h4>Add a new engineer</h4>
+<hr />
+@using (Html.BeginForm())
+{
+  @Html.Label("Engineer First Name: ")
+  @Html.TextBoxFor(model => model.EngineerFirstName)
+  @Html.Label("Engineer Last Name: ")
+  @Html.TextBoxFor(model => model.EngineerLastName)
+  @Html.Label("Engineer License Number: ")
+  @Html.TextBoxFor(model => model.EngineerLicenseNumber)
+  @Html.Label("Date of License Renewal: ")
+  @Html.TextBoxFor(model => model.DateOfLicenseRenewal, new {@type="date"})
+  
+  <input type = "submit" value="Add new engineer">
+}
+<hr />
+<p>@Html.ActionLink("Show all engineers", "Index")</p>
+<p>@Html.ActionLink("Show all machines", "Index", "Machines")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
