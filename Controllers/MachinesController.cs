@@ -41,13 +41,25 @@ namespace Factory.Controllers
     public ActionResult Details(int id)
     {
       var thisMachine = _db.Machines
-        .Include(machine=>machine.Engineers)
-        .ThenInclude(join=>join.Engineer)
-        .FirstOrDefault(machine=>machine.MachineId==id);
-      
+        .Include(machine => machine.Engineers)
+        .ThenInclude(join => join.Engineer)
+        .FirstOrDefault(machine => machine.MachineId == id);
+
+      return View(thisMachine);
+    }
+    public ActionResult Edit(int id)
+    {
+      Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
       return View(thisMachine);
     }
 
+    [HttpPost]
+    public ActionResult Edit(Machine machine, int EngineerId)
+    {
+      _db.Entry(machine).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", "Machines", new { id = machine.MachineId });
+    }
 
   }
 }
