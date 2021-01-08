@@ -1,0 +1,19 @@
+@{
+  Layout="_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h2>Add Engineer to the machine @Html.DisplayFor(model => model.MachineBrandName) @Html.DisplayFor(model => model.MachineModelName) | @Html.DisplayFor(model => model.MachineProductionYear)</h2>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.MachineId)
+
+  @Html.Label("Select Engineer")
+  @Html.DropDownList("EngineerId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to Machines", "Index")</p>

@@ -22,12 +22,13 @@ else
   <ul>
     @foreach (var join in Model.Engineers)
     {
-        <li>@Html.ActionLink($"{@join.Engineer.EngineerFirstName + " " + @join.Engineer.EngineerLastName + "(license number:" + @join.Engineer.EngineerLicenseNumber + ")"}", "Details", "Engineers", new {id=join.Engineer.EngineerId}, null)</li>
+        <li>@Html.ActionLink($"{@join.Engineer.EngineerFirstName + " " + @join.Engineer.EngineerLastName + " ( License Number: " + @join.Engineer.EngineerLicenseNumber + " )"}", "Details", "Engineers", new {id=join.Engineer.EngineerId}, null)</li>
     }
   </ul>
 }
 
 <hr />
+<p>@Html.ActionLink("Add Engineer to Machine", "AddEngineer", new{id=Model.MachineId})</p>
 <p>@Html.ActionLink("Edit machine", "Edit", new { id = Model.MachineId})</p>
 <p>@Html.ActionLink("Delete machine", "Delete", new { id = Model.MachineId})</p>
 <p>@Html.ActionLink("Back to all machines", "Index")</p>
