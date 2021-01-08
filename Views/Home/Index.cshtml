@@ -2,7 +2,28 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models
+@model List<Factory.Models.Engineer>
+
 <h1> Welcome to the Dr. Sillystringz's Factory!</h1>
 <hr />
-<p>@Html.ActionLink("Show all engineers", "Index", "Engineers")</p>
-<p>@Html.ActionLink("Show all machines", "Index", "Machines")</p>
+<h2>Engineers</h2>
+  <hr />
+  @if (Model.Count == 0)
+  {
+    <h3>No engineers have been employed!</h3>
+  }
+
+  <ul>
+    @foreach (Engineer engineer in Model)
+    {
+      <li>@Html.ActionLink($"{engineer.EngineerFirstName + " " + engineer.EngineerLastName}", "Details", new {id = engineer.EngineerId})</li>
+    }
+  </ul>
+<hr />
+
+
+
+
+<p>@Html.ActionLink("Show engineers only", "Index", "Engineers")</p>
+<p>@Html.ActionLink("Show machines only", "Index", "Machines")</p>
