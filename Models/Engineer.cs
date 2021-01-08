@@ -1,11 +1,14 @@
-using MySql.Data.MySqlClient;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Factory.Models
 {
   public class Engineer
   {
-    public Ingineer()
+    public Engineer()
     {
       this.Machines = new HashSet<EngineerMachine>();
     }
@@ -15,8 +18,8 @@ namespace Factory.Models
     public string EngineerLicenseNumber { get; set; }
     [DisplayName("DateOfLicenseRenewal")]
     [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        public DateTime DateOfLicenseRenewal { get; set; }
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+    public DateTime DateOfLicenseRenewal { get; set; }
     public ICollection<EngineerMachine> Machines { get; }
   }
 }
