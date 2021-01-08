@@ -2,6 +2,7 @@ using Factory.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Factory.Controllers
@@ -18,5 +19,25 @@ namespace Factory.Controllers
     {
       return View(_db.Machines.ToList());
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Machine machine, int EngineerId)
+    {
+      _db.Machines.Add(machine);
+      if (EngineerId != 0)
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() { MachineId = machine.MachineId, EngineerId = EngineerId });
+      }
+
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+
   }
 }
