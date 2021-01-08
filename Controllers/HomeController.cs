@@ -15,21 +15,11 @@ namespace Factory.Controllers
     {
       _db = db;
     }
-    public class ViewModel
-    {
-      public List<Engineer> Engineers { get; set; }
-      public List<Machine> Machines { get; set; }
-
-      public ViewModel()
-      {
-        this.Engineers = new List<Engineer>();
-        this.Machines = new List<Machine>();
-      }
-    }
+    
     [HttpGet("/")]
     public ActionResult Index()
     {
-      ViewModel model = new ViewModel();
+      HomeViewModel model = new HomeViewModel();
       model.Engineers = _db.Engineers.ToList();
       model.Machines = _db.Machines.ToList();
       return View(model);
