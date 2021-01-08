@@ -16,10 +16,10 @@ namespace Factory.Models
     public string EngineerFirstName { get; set; }
     public string EngineerLastName { get; set; }
     public string EngineerLicenseNumber { get; set; }
-    [DisplayName("DateOfLicenseRenewal")]
+    [DisplayName("EngineerDateOfLicenseRenewal")]
     [DataType(DataType.Date)]
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-    public DateTime DateOfLicenseRenewal { get; set; }
+    public DateTime EngineerDateOfLicenseRenewal { get; set; }
     public ICollection<EngineerMachine> Machines { get; }
   }
 }

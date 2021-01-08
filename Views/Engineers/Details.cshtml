@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+@using Factory.Models;
+@model Factory.Models.Engineer
+
+<h2>Engineer Details</h2>
+<hr />
+<h4>Engineer First Name: @Html.DisplayFor(model=>model.EngineerFirstName)</h4>
+<h4>Engineer Last Name: @Html.DisplayFor(model=>model.EngineerLastName)</h4>
+<h4>Engineer License Number: @Html.DisplayFor(model=>model.EngineerLicenseNumber)</h4>
+<h4>Engineer Date of License Renewal: @Html.DisplayFor(model=>model.EngineerDateOfLicenseRenewal, new {@type="date"})</h4>
+
+@if (Model.Machines.Count == 0)
+{
+  <p>This engineer does not licensed to repair machines.</p>
+}
+else
+{
+  <p>@Html.DisplayFor(model=>model.EngineerFirstName) @Html.DisplayFor(model=>model.EngineerLastName) is lecensed to repair the next machine(s):</p>
+  <ul>
+    @foreach (var join in Model.Machines)
+    {
+        <li>@Html.ActionLink($"{@join.Machine.MachineBrandName + " " + @join.Machine.MachineModelName + "(" + @join.Machine.MachineProductionYear + ")"}", "Details", "Machines", new {id=join.Machine.MachineId}, null)</li>
+    }
+  </ul>
+}
+
+<hr />
+<p>@Html.ActionLink("Back to all engineers", "Index")</p>
+<p>@Html.ActionLink("Back to all machines", "Index", "Machines")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+

@@ -2,6 +2,7 @@ using Factory.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Factory.Controllers
@@ -21,7 +22,6 @@ namespace Factory.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.MachineId = new SelectList((from s in _db.Machines select new {MachineId=s.MachineId, FullName=s.MachineBrandName + " " + s.MachineModelName + "(" + s.MachineProductionYear + ")" }), "StylistId", "FullName", null);
       return View();
     }
 
@@ -35,6 +35,16 @@ namespace Factory.Controllers
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      var thisEngineer = _db.Engineers
+        .Include(engineer=>engineer.Machines)
+        .ThenInclude(join=>join.Machine)
+        .FirstOrDefault(engineer=>engineer.EngineerId==id);
+      
+      return View(thisEngineer);
     }
   }
 }
