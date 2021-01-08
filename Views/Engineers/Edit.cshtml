@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h4>Edit @Html.DisplayFor(model => model.EngineerFirstName) @Html.DisplayFor(model =>model.EngineerLastName)</h4>
+<hr />
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model =>model.EngineerId)
+  @Html.Label("Engineer First Name: ")
+  @Html.EditorFor(model =>model.EngineerFirstName)
+  @Html.Label("Engineer Last Name: ")
+  @Html.EditorFor(model =>model.EngineerLastName)
+  @Html.Label("Engineer License Number: ")
+  @Html.EditorFor(model => model.EngineerLicenseNumber)
+  @Html.Label("Date of License Renewal: ")
+  @Html.EditorFor(model => model.EngineerDateOfLicenseRenewal, new {@type="date"})
+
+  <input type="submit" value="Save" />
+}
+<hr />
+
+<p>@Html.ActionLink("Back to all engineers", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p> 
