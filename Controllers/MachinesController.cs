@@ -2,7 +2,6 @@ using Factory.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Factory.Controllers
@@ -75,6 +74,8 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    //Add Engineer to a particular Machine
     public ActionResult AddEngineer(int id)
     {
       var thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
@@ -98,6 +99,7 @@ namespace Factory.Controllers
       return RedirectToAction("Details", "Machines", new { id = machine.MachineId });
     }
 
+    //Delete Engineer from a particular Machine
     [HttpPost]
     public ActionResult DeleteEngineer(int joinId, int MachineId)
     {
@@ -106,6 +108,5 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Details", "Machines", new { id = MachineId });
     }
-
   }
 }

@@ -5,6 +5,7 @@
 @model Factory.Models.Machine
 
 <h4>Edit @Html.DisplayFor(model => model.MachineBrandName) @Html.DisplayFor(model => model.MachineModelName) | @Html.DisplayFor(model => model.MachineProductionYear)</h4>
+
 <hr />
 @using (Html.BeginForm())
 {
@@ -22,6 +23,7 @@
 
   <input type="submit" value="Save" />
 }
+
 <hr />
 <p>@Html.ActionLink("Back to machine details", "Details", new {id=Model.MachineId})</p>
 <p>@Html.ActionLink("Back to all machines", "Index")</p>

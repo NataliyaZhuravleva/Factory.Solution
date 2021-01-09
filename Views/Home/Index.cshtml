@@ -6,22 +6,26 @@
 @model Factory.Models.HomeViewModel
 
 <h1> Welcome to the Dr. Sillystringz's Factory!</h1>
+
 <hr />
 <h2>Engineers</h2>
-  <hr />
-  @if (Model.Engineers.Count == 0)
-  {
-    <h3>No engineers have been employed!</h3>
-  }
 
-  <ul>
-    @foreach (Engineer engineer in Model.Engineers)
-    {
-      <li>@Html.ActionLink($"{engineer.EngineerFirstName + " " + engineer.EngineerLastName}", "Details", "Engineers", new {id = engineer.EngineerId})</li>
-    }
-  </ul>
+<hr />
+@if (Model.Engineers.Count == 0)
+{
+  <h3>No engineers have been employed!</h3>
+}
+
+<ul>
+  @foreach (Engineer engineer in Model.Engineers)
+  {
+    <li>@Html.ActionLink($"{engineer.EngineerFirstName + " " + engineer.EngineerLastName}", "Details", "Engineers", new {id = engineer.EngineerId})</li>
+  }
+</ul>
+
 <hr />
 <h2>Machines</h2>
+
 <hr />
 @if (@Model.Machines.Count == 0)
 {
@@ -31,12 +35,10 @@
 <ul>
   @foreach (Machine machine in Model.Machines)
   {
-      <li>@Html.ActionLink($"{machine.MachineBrandName + " " + machine.MachineModelName + "(" + machine.MachineProductionYear + ")"}", "Details", "Machines", new {id = machine.MachineId})</li>
+    <li>@Html.ActionLink($"{machine.MachineBrandName + " " + machine.MachineModelName + "(" + machine.MachineProductionYear + ")"}", "Details", "Machines", new {id = machine.MachineId})</li>
   }
 </ul>
 <hr />
-
-
 
 <p>@Html.ActionLink("Show engineers only", "Index", "Engineers")</p>
 <p>@Html.ActionLink("Show machines only", "Index", "Machines")</p>

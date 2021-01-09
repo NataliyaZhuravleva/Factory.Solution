@@ -1,10 +1,11 @@
 @{
   Layout = "_Layout";
 }
-@using Factory.Models;
+
 @model Factory.Models.Engineer
 
 <h2>Engineer Details</h2>
+
 <hr />
 <h4>Engineer First Name: @Html.DisplayFor(model=>model.EngineerFirstName)</h4>
 <h4>Engineer Last Name: @Html.DisplayFor(model=>model.EngineerLastName)</h4>
@@ -21,13 +22,14 @@ else
   <ul>
     @foreach (var join in Model.Machines)
     {
-        <li>@Html.ActionLink($"{@join.Machine.MachineBrandName + " " + @join.Machine.MachineModelName + "(" + @join.Machine.MachineProductionYear + ")"}", "Details", "Machines", new {id=join.Machine.MachineId}, null)</li>
-        @using (Html.BeginForm("DeleteMachine", "Engineers"))
-        {
-            @Html.Hidden("joinId", @join.EngineerMachineId)
-            @Html.HiddenFor(model =>model.EngineerId)
-            <input type="submit" value="Delete" />
-        }
+      <li>@Html.ActionLink($"{@join.Machine.MachineBrandName + " " + @join.Machine.MachineModelName + "(" + @join.Machine.MachineProductionYear + ")"}", "Details", "Machines", new {id=join.Machine.MachineId}, null)</li>
+      @using (Html.BeginForm("DeleteMachine", "Engineers"))
+      {
+        @Html.Hidden("joinId", @join.EngineerMachineId)
+        @Html.HiddenFor(model =>model.EngineerId)
+    
+        <input type="submit" value="Delete" />
+      }
     }
   </ul>
 }

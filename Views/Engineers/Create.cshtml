@@ -5,6 +5,7 @@
 @model Factory.Models.Engineer
 
 <h4>Add a new engineer</h4>
+
 <hr />
 @using (Html.BeginForm())
 {
@@ -19,6 +20,7 @@
   
   <input type = "submit" value="Add new engineer">
 }
+
 <hr />
 <p>@Html.ActionLink("Show all engineers", "Index")</p>
 <p>@Html.ActionLink("Show all machines", "Index", "Machines")</p>

@@ -6,6 +6,7 @@
 
 <h2>Add Engineer to the machine @Html.DisplayFor(model => model.MachineBrandName) @Html.DisplayFor(model => model.MachineModelName) | @Html.DisplayFor(model => model.MachineProductionYear)</h2>
 
+<hr />
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.MachineId)
@@ -16,4 +17,5 @@
   <input type="submit" value="Save" />
 }
 
+<hr />
 <p>@Html.ActionLink("Back to Machines", "Index")</p>

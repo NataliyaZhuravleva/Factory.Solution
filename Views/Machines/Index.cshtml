@@ -6,6 +6,7 @@
 @model List<Factory.Models.Machine>;
 
 <h2>Machines</h2>
+
 <hr />
 @if (@Model.Count == 0)
 {
@@ -18,6 +19,7 @@
       <li>@Html.ActionLink($"{machine.MachineBrandName + " " + machine.MachineModelName + "(" + machine.MachineProductionYear + ")"}", "Details", new {id = machine.MachineId})</li>
   }
 </ul>
+
 <hr />
 <p>@Html.ActionLink("Add new machine", "Create")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

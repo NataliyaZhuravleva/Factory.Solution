@@ -5,6 +5,7 @@
 @model Factory.Models.Machine
 
 <h2>Are you sure you want to delete this machine?</h2>
+
 <hr />
 <h4>Machine Brand Name: @Html.DisplayFor(model => model.MachineBrandName)</h4>
 <h4>Machine Model Name: @Html.DisplayFor(model => model.MachineModelName)</h4>
@@ -16,6 +17,7 @@
 {
   <input type="submit" value="Delete" />
 }
+
 <hr />
 <p>@Html.ActionLink("Edit machine", "Edit", new { id = Model.MachineId})</p>
 <p>@Html.ActionLink("Back to all machines", "Index")</p>

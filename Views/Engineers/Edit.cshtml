@@ -5,6 +5,7 @@
 @model Factory.Models.Engineer
 
 <h4>Edit @Html.DisplayFor(model => model.EngineerFirstName) @Html.DisplayFor(model =>model.EngineerLastName)</h4>
+
 <hr />
 @using (Html.BeginForm())
 {
@@ -20,6 +21,7 @@
 
   <input type="submit" value="Save" />
 }
+
 <hr />
 <p>@Html.ActionLink("Back to engineer details", "Details", new {id=Model.EngineerId})</p>
 <p>@Html.ActionLink("Back to all engineers", "Index")</p>
